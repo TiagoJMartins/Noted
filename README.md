@@ -6,4 +6,4 @@ This is a very simple (and very visually ugly), note taking application or to-do
 I created this application as practice for front and back-end development.  
 It uses MongoDB as a database and only has simple CRUD functionality.
 
-You can test the application (here)[https://noted-tiagojmartins.c9users.io/].
+You can test the application [here](https://noted-tiagojmartins.c9users.io/).
