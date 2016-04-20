@@ -35,26 +35,30 @@ module.exports = function(app) {
           req.flash('info', 'There was an error while creating the note!');
           res.redirect('/');
         } else {
-        req.flash('info', 'Note created!');
         res.redirect('/');
         }
       });
     }
   });
 
-  // PUT UPDATE
-  app.put('/update', function(req, res) {
+  // POST UPDATE
+  app.post('/update/:id', function(req, res) {
     // Update an existing note
+    var id = req.params.id;
+    var content = req.body.updateNote;
 
-    req.flash('info', 'Note updated!');
-    res.redirect('/');
+    noteController.updateNote(id, content, function(err) {
+        res.redirect('/');
+    });
   });
 
-  // DELETE DELETE
-  app.delete('/delete', function(req, res) {
+  // GET DELETE
+  app.get('/delete/:id', function(req, res) {
     // Delete an existing note
+    var id = req.params.id;
 
-    req.flash('info', 'Note deleted!');
-    res.redirect('/');
+    noteController.deleteNote(id, function(err) {
+        res.redirect('/');
+    });
   });
 };
