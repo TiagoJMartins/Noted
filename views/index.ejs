@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+  <% include partials/head %>
+
+  <body>
+    <h1 class="text-center">Noted - To-do list application</h1>
+    <% if (flash.length) { %>
+      <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <%= flash %>
+      </div>
+    <% } %>
+    <form class="newNoteForm form-inline text-center" action="/create" method="post">
+      <div class="form-group">
+        <input class="form-control" type="text" name="newNote" value="" autocomplete="off" placeholder="Type a new note!">
+        <button class="btn btn-default" type="submit">&crarr;</button>
+      </div>
+    </form>
+
+    <% if (notes.length) { %>
+      <div class="jumbotron">
+        <div class="note-area">
+          <ul class="notes">
+            <% for(var i = 0; i < notes.length; i++) { %>
+                <li><%= notes[i].content %></li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    <% } %>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+  </body>
+
+</html>

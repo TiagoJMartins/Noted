@@ -1,0 +1,31 @@
+h1 {
+  font-size: 5rem;
+  padding: 1.8rem 0 1.8rem 0;
+}
+
+.newNoteForm {
+  padding: 3rem 0 1rem 0;
+}
+
+.jumbotron {
+  width: 60%;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 2px solid #ECECDE;
+  background-color: #FFFFF5;
+  padding: 18px 10px 10px 0;
+}
+
+.alert {
+  width: 80%;
+  margin: 0 auto;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  padding-left: 20px;
+  font-size: 2rem;
+}
