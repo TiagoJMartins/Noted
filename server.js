@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var app = express();
 var http = require('http').Server(app);
-var dbUrl = 'mongodb://admin:password@ds013911.mlab.com:13911/noted';
+var dbUrl = 'YOUR MONGODB URL HERE';
 
 mongoose.connect(dbUrl, function() {
   console.log('Connected to remote database...');
