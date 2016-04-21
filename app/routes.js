@@ -41,7 +41,7 @@ module.exports = function(app) {
     }
   });
 
-  // POST UPDATE
+  // POST UPDATE (Mudar verbo para PUT)
   app.post('/update/:id', function(req, res) {
     // Update an existing note
     var id = req.params.id;
@@ -52,7 +52,7 @@ module.exports = function(app) {
     });
   });
 
-  // GET DELETE
+  // GET DELETE (Mudar verbo para DELETE)
   app.get('/delete/:id', function(req, res) {
     // Delete an existing note
     var id = req.params.id;
