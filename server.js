@@ -26,6 +26,6 @@ app.use(flash());
 
 require('./app/routes.js')(app);
 
-http.listen($PORT || 8080, function() {
+http.listen(process.env.PORT || 8080, function() {
   console.log('Server listening...');
 });
