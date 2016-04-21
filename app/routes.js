@@ -11,7 +11,8 @@ module.exports = function(app) {
         res.render('index', {
           flash: req.flash('info')
         });
-      } else {
+      }
+      else {
         res.render('index', {
           flash: req.flash('info'),
           notes: data
@@ -26,16 +27,19 @@ module.exports = function(app) {
     if (!req.body.newNote.length) {
       req.flash('info', 'Note cannot be empty.');
       res.redirect('/');
-    } else if (req.body.newNote.length > 40) {
+    }
+    else if (req.body.newNote.length > 40) {
       req.flash('info', 'Note cannot be over 40 characters.');
       res.redirect('/');
-    } else {
+    }
+    else {
       noteController.createNote(req.body, function(err) {
         if (err) {
           req.flash('info', 'There was an error while creating the note!');
           res.redirect('/');
-        } else {
-        res.redirect('/');
+        }
+        else {
+          res.redirect('/');
         }
       });
     }
@@ -48,7 +52,7 @@ module.exports = function(app) {
     var content = req.body.updateNote;
 
     noteController.updateNote(id, content, function(err) {
-        res.redirect('/');
+      res.redirect('/');
     });
   });
 
@@ -58,7 +62,40 @@ module.exports = function(app) {
     var id = req.params.id;
 
     noteController.deleteNote(id, function(err) {
-        res.redirect('/');
+      res.redirect('/');
     });
+  });
+
+
+  /**
+   * REST API STARTS HERE
+   **/
+
+  app.get('/notes', function(req, res) {
+    noteController.getNotes(function(err, data) {
+      if (err) console.log('Error getting notes from API: ', err);
+      res.send(data);
+    });
+  });
+
+  app.post('/notes', function(req, res) {
+    if (!req.body.newNote.length) {
+      res.send({ error: 'Note cannot be empty.'});
+    } else if (req.body.newNote.length > 40) {
+      res.send({ error: 'Note cannot be over 40 characters.' });
+    } else {
+      noteController.createNote(req.body, function(err) {
+        if (err) res.send({ error: 'Error creating note.' });
+        res.redirect('/notes');
+      });
+    }
+  });
+
+  app.put('/notes/:id', function(req, res) {
+
+  });
+
+  app.delete('/notes/:id', function(req, res) {
+
   });
 };

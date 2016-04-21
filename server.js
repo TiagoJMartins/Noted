@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var app = express();
 var http = require('http').Server(app);
-var dbUrl = 'YOUR MONGODB URL HERE';
+var dbUrl = 'mongodb://admin:password@ds013911.mlab.com:13911/noted';
 
 mongoose.connect(dbUrl, function() {
   console.log('Connected to remote database...');
@@ -26,6 +26,6 @@ app.use(flash());
 
 require('./app/routes.js')(app);
 
-http.listen(process.env.PORT || 8080, function() {
+http.listen(8080, function() {
   console.log('Server listening...');
 });

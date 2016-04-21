@@ -20,9 +20,9 @@
         <%= flash %>
       </div>
     <% } %>
-    <form class="newNoteForm form-inline text-center" action="/create" method="post">
+    <form class="newNoteForm form-inline text-center">
       <div class="form-group">
-        <input class="form-control" type="text" name="newNote" value="" autocomplete="off" placeholder="Type a new note!" autofocus>
+        <input id="noteInput" class="form-control" type="text" name="newNote" value="" autocomplete="off" placeholder="Type a new note!" autofocus>
         <button class="btn btn-default" type="submit">&crarr;</button>
       </div>
     </form>
